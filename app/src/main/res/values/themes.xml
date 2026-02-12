@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.SaveAStray" parent="Theme.Material3.DayNight.NoActionBar">
+    </style>
+
+    <style name="Theme.SaveAStray" parent="Base.Theme.SaveAStray" />
+
+    <style name="rounded_image" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="TealSearchViewTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:editTextColor">#333333</item>
+
+        <item name="android:textColorHint">#888888</item>
+
+        <item name="colorControlNormal">@color/primary_teal</item>
+
+        <item name="colorAccent">@color/primary_teal</item>
+    </style>
+</resources>

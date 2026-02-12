@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_teal"
+    tools:context=".AddCatActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add New Cat"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            app:cardCornerRadius="80dp"
+            app:cardElevation="4dp"
+            android:layout_marginBottom="24dp">
+
+            <ImageView
+                android:id="@+id/ivCatPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/img_no_preview"
+                android:scaleType="centerCrop"
+                android:background="@color/card_sage"/>
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@android:drawable/ic_menu_camera"
+                app:tint="@color/primary_teal"
+                android:layout_gravity="center"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tap to add photo"
+            android:textColor="@color/white"
+            android:layout_marginBottom="24dp"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <EditText
+                    android:id="@+id/etCatName"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/rounded_input"
+                    android:hint="Cat's Name"
+                    android:paddingStart="16dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <EditText
+                    android:id="@+id/etCatBreed"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/rounded_input"
+                    android:hint="Breed (e.g., Puspin, Persian)"
+                    android:paddingStart="16dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <EditText
+                    android:id="@+id/etCatAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/rounded_input"
+                    android:hint="Age (e.g., 2 years)"
+                    android:paddingStart="16dp"
+                    android:inputType="text"
+                    android:layout_marginBottom="16dp"/>
+
+                <EditText
+                    android:id="@+id/etCatDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@drawable/rounded_input"
+                    android:hint="Description (Personality, history...)"
+                    android:padding="16dp"
+                    android:gravity="top|start"
+                    android:inputType="textMultiLine"
+                    android:layout_marginBottom="24dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Personality Profile"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="16dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Energy Level"
+                    android:textStyle="bold"
+                    android:textColor="#555555"
+                    android:layout_marginBottom="4dp"/>
+
+                <RadioGroup
+                    android:id="@+id/rgEnergy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="16dp">
+
+                    <RadioButton android:id="@+id/rbEnergyLow" android:text="Low Energy (Calm)" android:layout_width="match_parent" android:layout_height="wrap_content" />
+                    <RadioButton android:id="@+id/rbEnergyMed" android:text="Moderate Energy" android:layout_width="match_parent" android:layout_height="wrap_content" />
+                    <RadioButton android:id="@+id/rbEnergyHigh" android:text="High Energy (Active)" android:layout_width="match_parent" android:layout_height="wrap_content" />
+                </RadioGroup>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sociability"
+                    android:textStyle="bold"
+                    android:textColor="#555555"
+                    android:layout_marginBottom="4dp"/>
+
+                <RadioGroup
+                    android:id="@+id/rgSociability"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="16dp">
+
+                    <RadioButton android:id="@+id/rbSocialInd" android:text="Independent" android:layout_width="match_parent" android:layout_height="wrap_content" />
+                    <RadioButton android:id="@+id/rbSocialBal" android:text="Balanced" android:layout_width="match_parent" android:layout_height="wrap_content" />
+                    <RadioButton android:id="@+id/rbSocialAff" android:text="Very Affectionate" android:layout_width="match_parent" android:layout_height="wrap_content" />
+                </RadioGroup>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Playfulness"
+                    android:textStyle="bold"
+                    android:textColor="#555555"
+                    android:layout_marginBottom="4dp"/>
+
+                <RadioGroup
+                    android:id="@+id/rgPlayfulness"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="16dp">
+
+                    <RadioButton android:id="@+id/rbPlayRelaxed" android:text="Calm" android:layout_width="match_parent" android:layout_height="wrap_content" />
+                    <RadioButton android:id="@+id/rbPlayMod" android:text="Moderately Playful" android:layout_width="match_parent" android:layout_height="wrap_content" />
+                    <RadioButton android:id="@+id/rbPlayActive" android:text="Very Playful" android:layout_width="match_parent" android:layout_height="wrap_content" />
+                </RadioGroup>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Attention Needs"
+                    android:textStyle="bold"
+                    android:textColor="#555555"
+                    android:layout_marginBottom="4dp"/>
+
+                <RadioGroup
+                    android:id="@+id/rgInteraction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="24dp">
+
+                    <RadioButton android:id="@+id/rbInteractLow" android:text="Low Maintenance" android:layout_width="match_parent" android:layout_height="wrap_content" />
+                    <RadioButton android:id="@+id/rbInteractMed" android:text="Moderate Attention" android:layout_width="match_parent" android:layout_height="wrap_content" />
+                    <RadioButton android:id="@+id/rbInteractHigh" android:text="High Attention Required" android:layout_width="match_parent" android:layout_height="wrap_content" />
+                </RadioGroup>
+
+                <Button
+                    android:id="@+id/btnSaveCat"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="Save Profile"
+                    android:backgroundTint="@color/accent_red"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:cornerRadius="12dp"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</ScrollView>

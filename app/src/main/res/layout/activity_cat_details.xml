@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_teal"
+    tools:context=".CatDetailsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+
+            <ImageView
+                android:id="@+id/ivDetailImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_no_preview"
+                android:background="#F0F0F0"/>
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/rounded_input"
+                android:backgroundTint="#80000000"
+                android:src="@drawable/abc_ic_ab_back_material"
+                app:tint="@color/white" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_top_sheet"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:layout_marginTop="-24dp"> <TextView
+            android:id="@+id/tvDetailName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cat Name"
+            android:textColor="@color/primary_teal"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDetailBreed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Breed • Age"
+                android:textColor="@color/text_hint"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="24dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0"
+                android:layout_marginBottom="24dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="About Me"
+                android:textColor="@color/primary_teal"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/tvDetailDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cat description goes here..."
+                android:textColor="#555555"
+                android:textSize="16sp"
+                android:lineSpacingExtra="4dp"
+                android:layout_marginBottom="32dp"/>
+
+            <Button
+                android:id="@+id/btnAdoptMe"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Adopt Me"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/accent_red"
+                app:cornerRadius="30dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
