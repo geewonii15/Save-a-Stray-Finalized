@@ -1,5 +1,6 @@
 package com.example.saveastray
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -7,6 +8,7 @@ import android.os.Bundle
 import android.util.Base64
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -26,6 +28,10 @@ class AddCatActivity : AppCompatActivity() {
     private lateinit var etAge: EditText
     private lateinit var etDesc: EditText
     private lateinit var btnSave: Button
+    private lateinit var btnBack: ImageButton
+
+    private lateinit var tvTitle: TextView
+
     private var imageUri: Uri? = null
     private var existingImageString: String = ""
     private var catId: String? = null
@@ -41,12 +47,19 @@ class AddCatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_cat)
 
+        tvTitle = findViewById(R.id.tvAddCatTitle)
+
         ivCatPhoto = findViewById(R.id.ivCatPhoto)
         etName = findViewById(R.id.etCatName)
         etBreed = findViewById(R.id.etCatBreed)
         etAge = findViewById(R.id.etCatAge)
         etDesc = findViewById(R.id.etCatDesc)
         btnSave = findViewById(R.id.btnSaveCat)
+        btnBack = findViewById(R.id.btnBack)
+
+        btnBack.setOnClickListener {
+            finish()
+        }
 
         ivCatPhoto.setOnClickListener {
             pickImage.launch("image/*")
@@ -55,6 +68,7 @@ class AddCatActivity : AppCompatActivity() {
         catId = intent.getStringExtra("catId")
 
         if (catId != null) {
+            tvTitle.text = "Update Cat Details"
             btnSave.text = "Update Cat"
 
             etName.setText(intent.getStringExtra("name"))
@@ -63,6 +77,16 @@ class AddCatActivity : AppCompatActivity() {
             etDesc.setText(intent.getStringExtra("description"))
 
             existingImageString = intent.getStringExtra("imageUrl") ?: ""
+
+            val energyVal = intent.getIntExtra("personality_energy", 0)
+            val socialVal = intent.getIntExtra("personality_social", 0)
+            val playVal = intent.getIntExtra("personality_play", 0)
+            val interactVal = intent.getIntExtra("personality_interaction", 0)
+
+            setRadioSelection(findViewById(R.id.rgEnergy), energyVal)
+            setRadioSelection(findViewById(R.id.rgSociability), socialVal)
+            setRadioSelection(findViewById(R.id.rgPlayfulness), playVal)
+            setRadioSelection(findViewById(R.id.rgInteraction), interactVal)
 
             if (existingImageString.isNotEmpty()) {
                 try {
@@ -77,6 +101,13 @@ class AddCatActivity : AppCompatActivity() {
 
         btnSave.setOnClickListener {
             saveOrUpdateCat()
+        }
+    }
+
+    private fun setRadioSelection(group: RadioGroup, value: Int) {
+        if (value > 0 && value <= group.childCount) {
+            val radioButton = group.getChildAt(value - 1) as? RadioButton
+            radioButton?.isChecked = true
         }
     }
 

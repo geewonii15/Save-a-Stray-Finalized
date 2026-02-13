@@ -50,6 +50,10 @@ class ManageCatsActivity : AppCompatActivity() {
                 intent.putExtra("age", cat.age)
                 intent.putExtra("description", cat.description)
                 intent.putExtra("imageUrl", cat.imageUrl)
+                intent.putExtra("personality_energy", cat.personality_energy)
+                intent.putExtra("personality_social", cat.personality_social)
+                intent.putExtra("personality_play", cat.personality_play)
+                intent.putExtra("personality_interaction", cat.personality_interaction)
                 startActivity(intent)
             },
 

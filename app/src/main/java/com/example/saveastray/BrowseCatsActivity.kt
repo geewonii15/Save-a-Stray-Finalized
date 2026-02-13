@@ -3,8 +3,10 @@ package com.example.saveastray
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
@@ -25,7 +27,10 @@ class BrowseCatsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_browse_cats)
 
+        val tvTitle = findViewById<TextView>(R.id.tvBrowseTitle)
+        val searchView = findViewById<SearchView>(R.id.searchView)
         val btnBack = findViewById<ImageButton>(R.id.btnBack)
+
         btnBack.setOnClickListener { finish() }
 
         recyclerView = findViewById(R.id.rvBrowseCats)
@@ -56,6 +61,9 @@ class BrowseCatsActivity : AppCompatActivity() {
         val isFiltered = intent.getBooleanExtra("IS_FILTERED", false)
 
         if (isFiltered) {
+            tvTitle.text = "Your Purr-fect Matches"
+            searchView.visibility = View.GONE
+
             val matchedCats = intent.getParcelableArrayListExtra<Cat>("MATCHED_LIST")
 
             if (matchedCats != null && matchedCats.isNotEmpty()) {
@@ -66,15 +74,15 @@ class BrowseCatsActivity : AppCompatActivity() {
                 tempCatList.addAll(matchedCats)
 
                 adapter.notifyDataSetChanged()
-                Toast.makeText(this, "Showing your perfect matches!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Showing your Purr-fect matches!", Toast.LENGTH_LONG).show()
             } else {
                 fetchCats()
             }
         } else {
+            tvTitle.text = "Find a Friend"
+            searchView.visibility = View.VISIBLE
             fetchCats()
         }
-
-        val searchView = findViewById<SearchView>(R.id.searchView)
 
         val searchEditText = searchView.findViewById<EditText>(androidx.appcompat.R.id.search_src_text)
         searchEditText.setTextColor(Color.BLACK)

@@ -1,5 +1,6 @@
 package com.example.saveastray
 
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
@@ -10,6 +11,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog // Import for the Popup
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -21,6 +23,9 @@ class CatDetailsActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private var currentCatId: String = ""
 
+    private var currentCatName: String = ""
+    private var currentCatImage: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cat_details)
@@ -29,11 +34,11 @@ class CatDetailsActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         currentCatId = intent.getStringExtra("CAT_ID") ?: ""
-        val catName = intent.getStringExtra("CAT_NAME") ?: "Unknown"
+        currentCatName = intent.getStringExtra("CAT_NAME") ?: "Unknown"
         val catBreed = intent.getStringExtra("CAT_BREED") ?: "Mixed Breed"
         val rawCatAge = intent.getStringExtra("CAT_AGE") ?: ""
         val catDesc = intent.getStringExtra("CAT_DESC") ?: "No description."
-        val catImageBase64 = intent.getStringExtra("CAT_IMAGE") ?: ""
+        currentCatImage = intent.getStringExtra("CAT_IMAGE") ?: ""
 
         val isAdmin = intent.getBooleanExtra("IS_ADMIN", false)
 
@@ -45,20 +50,19 @@ class CatDetailsActivity : AppCompatActivity() {
         btnAdopt = findViewById<Button>(R.id.btnAdoptMe)
 
         val ageNumber = rawCatAge.filter { it.isDigit() }
-
         val finalAge = if (ageNumber.isNotEmpty()) {
             "$ageNumber Years Old"
         } else {
             "Unknown Age"
         }
 
-        tvName.text = catName
+        tvName.text = currentCatName
         tvBreedAge.text = "$catBreed • $finalAge"
         tvDesc.text = catDesc
 
-        if (catImageBase64.isNotEmpty()) {
+        if (currentCatImage.isNotEmpty()) {
             try {
-                val imageBytes = Base64.decode(catImageBase64, Base64.DEFAULT)
+                val imageBytes = Base64.decode(currentCatImage, Base64.DEFAULT)
                 val decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
                 ivImage.setImageBitmap(decodedImage)
             } catch (e: Exception) {
@@ -72,11 +76,30 @@ class CatDetailsActivity : AppCompatActivity() {
             btnAdopt.visibility = View.GONE
         } else {
             btnAdopt.visibility = View.VISIBLE
-            btnAdopt.setOnClickListener {
-                sendAdoptionRequest(currentCatId, catName, catImageBase64)
-            }
+
             checkIfAlreadyApplied()
+
+            btnAdopt.setOnClickListener {
+                showAdoptionInfoDialog()
+            }
         }
+    }
+
+    private fun showAdoptionInfoDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("Adoption Process")
+            .setMessage("Thank you for choosing to adopt!\n\n" +
+                    "To ensure the safety and well-being of our cats, all adopters are required to attend an in-person interview.\n\n" +
+                    "Please visit the shelter during our opening hours to proceed with the adoption process.\n\n" +
+                    "Our team will guide you through the next steps.")
+            .setPositiveButton("Understood") { dialog, _ ->
+                sendAdoptionRequest(currentCatId, currentCatName, currentCatImage)
+                dialog.dismiss()
+            }
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
     }
 
     private fun checkIfAlreadyApplied() {

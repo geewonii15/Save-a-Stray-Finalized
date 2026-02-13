@@ -4,10 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 
 class AdminRegisterActivity : AppCompatActivity() {
@@ -26,6 +26,7 @@ class AdminRegisterActivity : AppCompatActivity() {
         val etEmail = findViewById<EditText>(R.id.etAdminRegEmail)
         val etPassword = findViewById<EditText>(R.id.etAdminRegPassword)
         val btnRegister = findViewById<Button>(R.id.btnAdminRegister)
+        val tvBackToLogin = findViewById<TextView>(R.id.tvBackToLogin)
 
         btnRegister.setOnClickListener {
             val name = etName.text.toString().trim()
@@ -53,13 +54,16 @@ class AdminRegisterActivity : AppCompatActivity() {
                         db.collection("users").document(uid).set(adminUser)
                             .addOnSuccessListener {
                                 Toast.makeText(this, "Registration successful! Awaiting Admin Approval.", Toast.LENGTH_LONG).show()
-
                                 finish()
                             }
                     } else {
                         Toast.makeText(this, "Registration Failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
                     }
                 }
+        }
+
+        tvBackToLogin.setOnClickListener {
+            finish()
         }
     }
 }
