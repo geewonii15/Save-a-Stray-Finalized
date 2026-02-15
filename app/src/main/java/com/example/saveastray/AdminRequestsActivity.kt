@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 
-class AdminRequestsActivity : AppCompatActivity() {
+class AdminRequestsActivity : BaseActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: AdoptionRequestAdapter

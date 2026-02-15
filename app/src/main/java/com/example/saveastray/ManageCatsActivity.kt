@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.firestore.FirebaseFirestore
 
-class ManageCatsActivity : AppCompatActivity() {
+class ManageCatsActivity : BaseActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: CatAdapter

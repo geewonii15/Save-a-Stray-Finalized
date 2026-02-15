@@ -20,7 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
 
-class AddCatActivity : AppCompatActivity() {
+class AddCatActivity : BaseActivity() {
 
     private lateinit var ivCatPhoto: ImageView
     private lateinit var etName: EditText

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class AdminSettingsActivity : AppCompatActivity() {
+class AdminSettingsActivity : BaseActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore

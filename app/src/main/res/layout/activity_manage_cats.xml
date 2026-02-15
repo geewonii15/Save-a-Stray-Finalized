@@ -2,23 +2,36 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary_teal"
     tools:context=".ManageCatsActivity">
 
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/abc_ic_ab_back_material"
+        app:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tvManageTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="8dp"
         android:text="My Cats"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="@+id/btnBack" />
 
     <TextView
         android:id="@+id/tvManageSubtitle"
@@ -27,28 +40,14 @@
         android:text="Tap a cat to edit details"
         android:textColor="@color/white"
         android:textSize="14sp"
-        android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="@+id/tvManageTitle"
         app:layout_constraintTop_toBottomOf="@+id/tvManageTitle" />
-
-    <ImageButton
-        android:id="@+id/btnBack"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="344dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/abc_ic_ab_back_material"
-        app:layout_constraintBottom_toBottomOf="@+id/tvManageSubtitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvManageTitle"
-        app:layout_constraintVertical_bias="0.0"
-        app:tint="@color/white" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCats"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/rounded_top_sheet"
         android:padding="16dp"
         android:clipToPadding="false"

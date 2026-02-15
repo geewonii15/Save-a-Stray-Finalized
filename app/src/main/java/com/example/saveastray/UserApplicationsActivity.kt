@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class UserApplicationsActivity : AppCompatActivity() {
+class UserApplicationsActivity : BaseActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ApplicationStatusAdapter

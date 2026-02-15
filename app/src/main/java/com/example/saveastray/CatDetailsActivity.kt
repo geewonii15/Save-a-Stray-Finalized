@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class CatDetailsActivity : AppCompatActivity() {
+class CatDetailsActivity : BaseActivity() {
 
     private lateinit var btnAdopt: Button
     private lateinit var db: FirebaseFirestore

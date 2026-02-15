@@ -21,7 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import java.io.ByteArrayOutputStream
 import java.util.Locale
 
-class UserProfileActivity : AppCompatActivity() {
+class UserProfileActivity : BaseActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore

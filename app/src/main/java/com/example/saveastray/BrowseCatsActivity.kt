@@ -2,6 +2,8 @@ package com.example.saveastray
 
 import android.content.Intent
 import android.graphics.Color
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
@@ -15,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Locale
 
-class BrowseCatsActivity : AppCompatActivity() {
+class BrowseCatsActivity : BaseActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: CatAdapter
@@ -30,6 +32,12 @@ class BrowseCatsActivity : AppCompatActivity() {
         val tvTitle = findViewById<TextView>(R.id.tvBrowseTitle)
         val searchView = findViewById<SearchView>(R.id.searchView)
         val btnBack = findViewById<ImageButton>(R.id.btnBack)
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
 
         btnBack.setOnClickListener { finish() }
 

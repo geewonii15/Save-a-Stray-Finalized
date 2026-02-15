@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class AdminLoginActivity : AppCompatActivity() {
+class AdminLoginActivity : BaseActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore

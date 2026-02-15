@@ -8,7 +8,7 @@ import com.google.android.material.card.MaterialCardView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class AdopterHomeActivity : AppCompatActivity() {
+class AdopterHomeActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
